@@ -1,0 +1,46 @@
+{{template "header" .}}
+<div class="p-8 w-full">
+  <h1 class="pt-4 pb-8 text-3xl font-bold text-gray-800">My galleries</h1>
+  <table class="w-full table-fixed">
+    <thead>
+      <tr>
+        <th class="p-2 text-left w-24">ID</th>
+        <th class="p-2 text-left">Title</th>
+        <th class="p-2 text-left w-96">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{ range .Galleries }}
+      <tr class="border">
+        <td class="p-2 border">{{.ID}}</td>
+        <td class="p-2 border">{{.Title}}</td>
+        <td class="p-2 border">
+          <a
+            href="/gallery/{{.ID}}"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >View</a
+          >
+          <a
+            href="/gallery/{{.ID}}/edit"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >Edit</a
+          >
+          <a
+            href="/gallery/{{.ID}}/delete"
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {{end}}
+    </tbody>
+  </table>
+  <div class="py-4">
+    <a
+      href="/gallery/new"
+      class="py-4 px-8 bg-indigo-600 hover:bg-indigo-700 text-white rounded font-bold text-lg"
+      >New Gallery</a
+    >
+  </div>
+</div>
+{{template "footer" .}}
